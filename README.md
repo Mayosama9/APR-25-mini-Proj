@@ -20,7 +20,7 @@ handwritten-digit-recognition/
 └── utils/
     └── predict_digit.py          # Helper script for custom predictions
 
-
+```
 ---
 
 ## 🚀 Features
