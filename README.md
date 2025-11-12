@@ -10,10 +10,10 @@ It uses the **MNIST dataset (CSV format)** stored in Google Drive and runs in **
 ```bash
 handwritten-digit-recognition/
 ├── README.md                     # Project documentation
-├── digit_recognition.ipynb       # Main Colab notebook or training script
+├── APR.ipynb       # Main Colab notebook or training script
 ├── data/
-    ├── train.csv                 # MNIST training data
-    └──  test.csv                  # MNIST test data
+    ├── mnist_train.csv                 # MNIST training data
+    └──  mnist_test.csv                  # MNIST test data
 
 
 ```
