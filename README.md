@@ -11,14 +11,10 @@ It uses the **MNIST dataset (CSV format)** stored in Google Drive and runs in **
 handwritten-digit-recognition/
 ├── README.md                     # Project documentation
 ├── digit_recognition.ipynb       # Main Colab notebook or training script
-├── digit_recognition_model.h5    # Saved trained model
-├── requirements.txt              # Python dependencies (optional)
 ├── data/
-│   ├── train.csv                 # MNIST training data
-│   ├── test.csv                  # MNIST test data
-│   └── sample_digit.png          # Example input image
-└── utils/
-    └── predict_digit.py          # Helper script for custom predictions
+    ├── train.csv                 # MNIST training data
+    └──  test.csv                  # MNIST test data
+
 
 ```
 ---
