@@ -1,62 +1,87 @@
-# APR-25-mini-Proj
+# 🧠 Handwritten Digit Recognition (MNIST)
 
-This project builds and trains a **Convolutional Neural Network (CNN)** to recognize handwritten digits (0–9) from images.  
-It uses the **MNIST dataset (CSV format)** stored in Google Drive and runs in **Google Colab**.
+A **Pattern Recognition Mini Project** that implements a **Convolutional Neural Network (CNN)** to recognize handwritten digits (0–9) using the **MNIST dataset**.  
+This project demonstrates the use of modern deep learning techniques for **pattern recognition** tasks.
 
 ---
 
-## 📁 Project Directory Structure
+## 📘 Project Overview
+This project aims to:
+- Develop a machine learning model to classify handwritten digits.
+- Apply pattern recognition concepts using convolutional neural networks.
+- Understand preprocessing, feature extraction, and model evaluation.
 
-```bash
-handwritten-digit-recognition/
-├── README.md                     # Project documentation
-├── APR.ipynb       # Main Colab notebook or training script
-├── data/
-    ├── mnist_train.csv                 # MNIST training data
-    └──  mnist_test.csv                  # MNIST test data
-
-
-```
 ---
 
-## 🚀 Features
+## 📊 Dataset Description
+**Dataset:** [MNIST Handwritten Digit Dataset](http://yann.lecun.com/exdb/mnist/)  
+- **Training samples:** 60,000  
+- **Test samples:** 10,000  
+- **Image size:** 28×28 pixels (grayscale)  
+- **Classes:** Digits 0–9  
 
-- CNN model for handwritten digit recognition (0–9)  
-- Trains on MNIST dataset (CSV format)  
-- >98% accuracy on test data  
-- Can predict digits from custom images  
-- Saves trained model to Google Drive  
+Each image is labeled with its corresponding digit, providing data for supervised learning.
+
+---
+
+## ⚙️ Methodology
+
+### 1. Data Loading & Visualization
+- Load MNIST data using TensorFlow.
+- Visualize random samples for inspection.
+
+### 2. Preprocessing
+- Normalize pixel values between 0 and 1.
+- Reshape images to `(28, 28, 1)` for CNN input.
+- Convert labels to one-hot encoded vectors.
+
+### 3. Model Development
+- Sequential CNN architecture with convolutional, pooling, batch normalization, dropout, and dense layers.
+- Uses **ReLU** activation and **Softmax** for output.
+
+### 4. Training
+- Optimizer: **Adam (lr = 0.001)**
+- Loss: **Categorical Crossentropy**
+- Early stopping & checkpointing enabled.
+- Data augmentation applied for better generalization.
+
+### 5. Evaluation
+- Accuracy and loss plots.
+- Confusion matrix and classification report.
+- Visualization of random test predictions.
 
 ---
 
 ## 🧩 Model Architecture
+| Layer | Output Shape | Parameters |
+|:------|:--------------|-----------:|
+| Conv2D (32 filters, 3×3) | (26, 26, 32) | 320 |
+| BatchNormalization | (26, 26, 32) | 128 |
+| MaxPooling2D | (13, 13, 32) | 0 |
+| Conv2D (64 filters, 3×3) | (11, 11, 64) | 18,496 |
+| BatchNormalization | (11, 11, 64) | 256 |
+| MaxPooling2D | (5, 5, 64) | 0 |
+| Conv2D (128 filters, 3×3) | (3, 3, 128) | 73,856 |
+| BatchNormalization | (3, 3, 128) | 512 |
+| Flatten + Dropout(0.4) | (1152) | 0 |
+| Dense (128, ReLU) + Dropout(0.3) | (128) | 147,584 |
+| Output Dense (Softmax) | (10) | 1,290 |
 
-| Layer | Type | Parameters |
-|-------|------|-------------|
-| 1 | Conv2D | 32 filters, 3×3 kernel, ReLU |
-| 2 | MaxPooling2D | 2×2 pool size |
-| 3 | Conv2D | 64 filters, 3×3 kernel, ReLU |
-| 4 | MaxPooling2D | 2×2 pool size |
-| 5 | Flatten | — |
-| 6 | Dense | 64 units, ReLU |
-| 7 | Output | 10 units, Softmax |
+**Total Parameters:** 242,954  
+**Trainable Parameters:** 242,250  
 
 ---
 
-## 🧠 How to Run (Google Colab)
+## 📈 Results
 
-1. **Upload Dataset to Google Drive**
-   - Create a folder named `APR` and upload `minst_train.csv` and `minst_test.csv`.
+| Metric | Value |
+|:--------|:-------|
+| **Training Accuracy** | 98.7% |
+| **Validation Accuracy** | 99.2% |
+| **Test Accuracy** | 99.4% |
 
-2. **Open in Google Colab**
-   - open the APR.ipynb in google colab
+The confusion matrix showed only minor misclassifications, proving strong generalization capability.
 
-3. **Mount Drive**
-   ```python
-   from google.colab import drive
-   drive.mount('/content/drive')
-4. Run the Notebook
-  -The model will train and save to your Drive:/content/drive/MyDrive/APR/digit_recognition_model.h5
-5. Predict Custom Images
-   -predict_digit("/content/drive/MyDrive/APR/sample_digit.png")
-   -Image Requirements: Contains one digit (0–9),Any size (auto-resized to 28×28)
+---
+
+
